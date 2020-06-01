@@ -34,7 +34,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="username"/>
                                         <connections>
-                                            <action selector="passwordTextFieldChanged" destination="BYZ-38-t0r" eventType="editingDidEnd" id="5L8-L8-6B7"/>
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="0us-V8-Axp"/>
                                         </connections>
                                     </textField>
@@ -159,7 +158,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
-                                    <segue destination="KRm-n7-G32" kind="show" id="sfL-7m-wyL"/>
+                                    <action selector="nextButtonPressed" destination="kS2-2W-VvB" eventType="touchUpInside" id="K3W-xk-7XR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -177,6 +176,7 @@
                     <navigationItem key="navigationItem" title="Information" id="5LO-h1-74F"/>
                     <connections>
                         <outlet property="informationLabel" destination="NDZ-qZ-jZR" id="sOw-dK-Rgq"/>
+                        <segue destination="KRm-n7-G32" kind="show" identifier="additionalInformationSegue" id="EXg-WK-weQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3RH-GF-ir9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

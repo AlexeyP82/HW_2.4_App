@@ -17,14 +17,15 @@ class LoginViewController: UIViewController {
   // MARK: - Public Properties
   
   // MARK: - Private Properties
+  private let user = User()
   
   // MARK: - Initializers
   
   // MARK: - Life Cycles Methods
   override func touchesBegan(_ touches: Set<UITouch>,
                              with event: UIEvent?) {
-    view.endEditing(true)
     super.touchesBegan(touches, with: event)
+    view.endEditing(true)
   }
   
   // MARK: - Navigation
@@ -33,27 +34,20 @@ class LoginViewController: UIViewController {
     let destinationVC = tabBarController.viewControllers?.first as!
     WelcomeViewController
     
-    let name = userNameTextField.text ?? ""
-    destinationVC.welcomeMessage = "Welcome, \(name)!"
+    destinationVC.user = user
   }
   
   // MARK: - IB Actions
-  @IBAction func passwordTextFieldChanged() {
-    passwordTextField.text = ""
-  }
-  
   @IBAction func loginButtonPressed() {
     logIn()
   }
   
   @IBAction func forgotUserNameButtonPressed() {
-    let user = User()
     showAlert(title: "Forgot name?",
               message: "User name is: \(user.name)")
   }
   
   @IBAction func forgotPasswordButtonPressed() {
-    let user = User()
     showAlert(title: "Forgot password?",
               message: "User password is: \(user.password)")
   }
@@ -76,7 +70,6 @@ class LoginViewController: UIViewController {
   }
   
   private func logIn() {
-    let user = User()
     if userNameTextField.text == user.name &&
       passwordTextField.text == user.password {
       performSegue(withIdentifier: "logInSegue", sender: self)
@@ -90,12 +83,14 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: UITextFieldDelegate {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    if textField == userNameTextField {
+    switch textField {
+    case userNameTextField:
       textField.resignFirstResponder()
       passwordTextField.becomeFirstResponder()
-    }
-    if textField == passwordTextField {
+    case passwordTextField:
       logIn()
+    default:
+      print("Wrong text field.")
     }
     
     return true

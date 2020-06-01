@@ -9,4 +9,12 @@
 struct User {
   let name = "User"
   let password = "Password"
+  let information = """
+  Я живу в городе Сургуте.
+  Работаю в нефтегазовой отрасли, исследую скважины.
+  """
+  let additionalInformation = """
+  Женат, имею двух дочерей 11 и 3 лет.
+  Люблю читать книжки и путешествовать на машине.
+  """
 }

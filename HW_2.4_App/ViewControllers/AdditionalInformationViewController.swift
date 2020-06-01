@@ -14,6 +14,7 @@ class AdditionalInformationViewController: UIViewController {
   @IBOutlet weak var additionalInformationLabel: UILabel!
   
   // MARK: - Public Properties
+  var user: User!
   
   // MARK: - Private Properties
   
@@ -23,8 +24,7 @@ class AdditionalInformationViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let information = AdditionalInformation()
-    additionalInformationLabel.text = information.text
+    additionalInformationLabel.text = user.additionalInformation
   }
   
   // MARK: - Navigation

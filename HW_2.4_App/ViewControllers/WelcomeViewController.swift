@@ -14,7 +14,7 @@ class WelcomeViewController: UIViewController {
   @IBOutlet weak var welcomeLabel: UILabel!
   
   // MARK: - Public Properties
-   var welcomeMessage: String!
+  var user: User!
   
   // MARK: - Private Properties
   
@@ -24,10 +24,21 @@ class WelcomeViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    welcomeLabel.text = welcomeMessage
+    welcomeLabel.text = "Welcome, \(user.name)!"
   }
   
   // MARK: - Navigation
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.destination is LoginViewController {
+      print("1")
+    } else {
+      let tabBarController = segue.destination as! UITabBarController
+      let destinationVC = tabBarController.viewControllers?[1] as!
+      InformationViewController
+      
+      destinationVC.user = user
+    }
+  }
   
   // MARK: - IB Actions
   
